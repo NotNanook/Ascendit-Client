@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ascendit",
+  "name": "Ascendit Client",
+  "description": "Minecraft client",
+  "version": "${v0.1}",
+  "mcversion": "${1.8.9}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Nanook", "Myzo"],
+  "credits": "Devs: Nanook and Myzo",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
