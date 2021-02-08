@@ -8,6 +8,8 @@ import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemCloth;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -26,11 +28,13 @@ public class ModuleEasyHiveBed extends Module{
 	@Override
 	public void onEnable() 
 	{
+		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "EasyHiveBed" + EnumChatFormatting.WHITE + "]: EasyHiveBed enabled"));
 	}
 
 	@Override
 	public void onDisable() 
 	{
+		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "EasyHiveBed" + EnumChatFormatting.WHITE + "]: EasyHiveBed disabled"));
 	}
 
 	@Override
