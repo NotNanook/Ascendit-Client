@@ -10,6 +10,7 @@ import me.ascendit.events.onLivingUpdateEvent;
 import me.ascendit.events.onPacketOutEvent;
 import me.ascendit.modules.Module;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
+import me.ascendit.modules.misc.ModuleEasyHiveBed;
 import me.ascendit.modules.misc.ModuleFastplace;
 import me.ascendit.modules.render.ModuleESP;
 import me.ascendit.network.ChannelHandlerInput;
@@ -31,6 +32,7 @@ public class Main
     public static ModuleFastplace fastplace;
     public static ModuleProjectileAimer projectileAimer;
     public static ModuleESP esp;
+    public static ModuleEasyHiveBed easyHiveBed;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -42,6 +44,7 @@ public class Main
     	fastplace = new ModuleFastplace();
     	projectileAimer = new ModuleProjectileAimer();
     	esp = new ModuleESP();
+    	easyHiveBed = new ModuleEasyHiveBed();
     }
     
     @EventHandler
@@ -51,6 +54,7 @@ public class Main
     	MinecraftForge.EVENT_BUS.register(new onKeyInputEvent());
     	MinecraftForge.EVENT_BUS.register(new onLivingUpdateEvent());
     	MinecraftForge.EVENT_BUS.register(new onInteractEvent());
+    	
     	
     	// network
     	MinecraftForge.EVENT_BUS.register(new ChannelHandlerInput());
