@@ -1,24 +1,17 @@
-package me.ascendit.modules.misc;
+package me.ascendit.modules.render;
 
 import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ModuleFastplace extends Module
+public class ModuleESP extends Module
 {
-	private int delay;
-	
-	public ModuleFastplace() 
+	public ModuleESP()
 	{
-		super("Fastplace", "Allows you to set the place delay to whatever you want", Category.MISC);
+		super("ESP", "Allows you to see players through walls", Category.RENDER);
 		this.registerModule();
 	}
-
-	@Override
-	public void onTick() 
-	{
-	}
-
+	
 	@Override
 	public void onEnable() 
 	{
@@ -26,6 +19,11 @@ public class ModuleFastplace extends Module
 
 	@Override
 	public void onDisable() 
+	{
+	}
+
+	@Override
+	public void onTick() 
 	{
 	}
 

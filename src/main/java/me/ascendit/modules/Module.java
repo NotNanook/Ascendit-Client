@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.ascendit.Main;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public abstract class Module {
 	
@@ -46,7 +47,18 @@ public abstract class Module {
 		return enabled;
 	}
 	
+	public int getKeyBind()
+	{
+		return keyBind;
+	}
+	
+	public void setKeyBind(int keyBind)
+	{
+		this.keyBind = keyBind;
+	}
+	
 	public abstract void onEnable();
 	public abstract void onDisable();
 	public abstract void onTick();
+	public abstract void onInteract(PlayerInteractEvent event);
 }
