@@ -18,7 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 public class ModuleEasyHiveBed extends Module{
 	
 	protected int radius = 3;
-	protected int counter; // makes sure that it only places blocks every 5 ticks (otherwise it wont work)
+	protected int counter; // makes sure that it only places blocks every 5 ticks (otherwise you will get kicked for too many packets)
 	
 	public ModuleEasyHiveBed()
 	{

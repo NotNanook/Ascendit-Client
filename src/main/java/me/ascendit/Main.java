@@ -12,6 +12,7 @@ import me.ascendit.modules.Module;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
 import me.ascendit.modules.misc.ModuleEasyHiveBed;
 import me.ascendit.modules.misc.ModuleFastplace;
+import me.ascendit.modules.movement.ModuleSprint;
 import me.ascendit.modules.render.ModuleESP;
 import me.ascendit.network.ChannelHandlerInput;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,6 +34,7 @@ public class Main
     public static ModuleProjectileAimer projectileAimer;
     public static ModuleESP esp;
     public static ModuleEasyHiveBed easyHiveBed;
+    public static ModuleSprint sprint;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -45,6 +47,7 @@ public class Main
     	projectileAimer = new ModuleProjectileAimer();
     	esp = new ModuleESP();
     	easyHiveBed = new ModuleEasyHiveBed();
+    	sprint = new ModuleSprint();
     }
     
     @EventHandler
