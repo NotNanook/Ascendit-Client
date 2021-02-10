@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
@@ -57,5 +58,15 @@ public class ModuleFastplace extends Module
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void setDelay(int delay)
+	{
+		this.delay = delay;
+	}
+
+	@Override
+	public void onRender(RenderGameOverlayEvent.Text event) 
+	{
 	}
 }

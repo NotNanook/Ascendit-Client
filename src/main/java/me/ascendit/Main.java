@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.Display;
 
 import me.ascendit.commands.Command;
-import me.ascendit.commands.toggleCommand;
+import me.ascendit.commands.CommandFastplace;
+import me.ascendit.commands.CommandToggle;
 import me.ascendit.events.onInteractEvent;
 import me.ascendit.events.onKeyInputEvent;
 import me.ascendit.events.onLivingUpdateEvent;
 import me.ascendit.events.onPacketOutEvent;
+import me.ascendit.events.onTextRenderEvent;
 import me.ascendit.modules.Module;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
 import me.ascendit.modules.misc.ModuleEasyHiveBed;
 import me.ascendit.modules.misc.ModuleFastplace;
 import me.ascendit.modules.movement.ModuleSprint;
 import me.ascendit.modules.render.ModuleESP;
+import me.ascendit.modules.render.ModuleFullbright;
+import me.ascendit.modules.render.ModuleModuleList;
 import me.ascendit.network.ChannelHandlerInput;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -37,10 +41,13 @@ public class Main
     public static ModuleESP esp;
     public static ModuleEasyHiveBed easyHiveBed;
     public static ModuleSprint sprint;
+    public static ModuleFullbright fullbright;
+    public static ModuleModuleList moduleList;
     
     // commands
     public static ArrayList<Command> commands;
     public static Command toggle;
+    public static Command setDelay;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -54,10 +61,13 @@ public class Main
     	esp = new ModuleESP();
     	easyHiveBed = new ModuleEasyHiveBed();
     	sprint = new ModuleSprint();
+    	fullbright = new ModuleFullbright();
+    	moduleList = new ModuleModuleList();
     	
     	// commands
     	commands = new ArrayList<Command>();
-    	toggle = new toggleCommand();
+    	toggle = new CommandToggle();
+    	setDelay = new CommandFastplace();
     }
     
     @EventHandler
@@ -67,6 +77,7 @@ public class Main
     	MinecraftForge.EVENT_BUS.register(new onKeyInputEvent());
     	MinecraftForge.EVENT_BUS.register(new onLivingUpdateEvent());
     	MinecraftForge.EVENT_BUS.register(new onInteractEvent());
+    	MinecraftForge.EVENT_BUS.register(new onTextRenderEvent());
     	
     	
     	// network

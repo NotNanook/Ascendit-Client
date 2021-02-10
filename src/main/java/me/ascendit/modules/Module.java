@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import me.ascendit.Main;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public abstract class Module {
@@ -66,4 +67,5 @@ public abstract class Module {
 	public abstract void onDisable();
 	public abstract void onTick();
 	public abstract void onInteract(PlayerInteractEvent event);
+	public abstract void onRender(RenderGameOverlayEvent.Text event);
 }

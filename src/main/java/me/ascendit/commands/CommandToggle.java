@@ -7,11 +7,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
-public class toggleCommand extends Command
+public class CommandToggle extends Command
 {
-	public toggleCommand()
+	public CommandToggle()
 	{
-		super("t", "Toggles a module for you", "Usage: .t [module]");
+		super("t", "Toggles a module for you", "Usage: .t <module>");
 		this.registerCommand();
 	}
 
@@ -20,7 +20,7 @@ public class toggleCommand extends Command
 	{
 		if(args.length != 2)
 		{
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "Error: " + this.getSyntax()));
+			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
 			return;
 		}
 		
@@ -40,5 +40,7 @@ public class toggleCommand extends Command
 				}	
 			}
 		}
+		
+		mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
 	}
 }

@@ -14,6 +14,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
 import net.minecraft.util.Vec3i;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ModuleEasyHiveBed extends Module{
@@ -83,6 +84,11 @@ public class ModuleEasyHiveBed extends Module{
 
 	@Override
 	public void onInteract(PlayerInteractEvent event) 
+	{
+	}
+	
+	@Override
+	public void onRender(RenderGameOverlayEvent.Text event) 
 	{
 	}
 }

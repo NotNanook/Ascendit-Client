@@ -15,6 +15,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ModuleProjectileAimer extends Module
@@ -148,6 +149,11 @@ public class ModuleProjectileAimer extends Module
 				mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "ProjectileAimer" + EnumChatFormatting.WHITE + "]: No valid angle found"));
 			}
 		}
+	}
+	
+	@Override
+	public void onRender(RenderGameOverlayEvent.Text event) 
+	{
 	}
 	
 	public double getDirection() 

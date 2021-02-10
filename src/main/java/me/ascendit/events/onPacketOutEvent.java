@@ -32,7 +32,7 @@ public class onPacketOutEvent {
 				event.setCanceled(true);
 				for(Command command : Main.commands)
 				{
-					if(message[0].substring(1).equals(command.getCommand()))
+					if(message[0].substring(1).equalsIgnoreCase(command.getCommand()))
 					{
 						command.onCommand(message);
 					}

@@ -2,6 +2,7 @@ package me.ascendit.modules.render;
 
 import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ModuleESP extends Module
@@ -29,6 +30,11 @@ public class ModuleESP extends Module
 
 	@Override
 	public void onInteract(PlayerInteractEvent event) 
+	{
+	}
+	
+	@Override
+	public void onRender(RenderGameOverlayEvent.Text event) 
 	{
 	}
 }
