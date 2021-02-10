@@ -2,6 +2,7 @@ package me.ascendit.modules.misc;
 
 import org.lwjgl.input.Keyboard;
 
+import me.ascendit.Main;
 import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
 import net.minecraft.block.BlockBed;
@@ -43,7 +44,7 @@ public class ModuleEasyHiveBed extends Module{
 	@Override
 	public void onTick() 
 	{
-		if(counter == 5)
+		if(counter == 5 && !Main.projectileAimer.isEnabled())
 		{
 			counter = 0;
 			for(int x = radius; x >= -radius; x--)
