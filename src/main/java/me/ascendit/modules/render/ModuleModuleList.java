@@ -1,5 +1,7 @@
 package me.ascendit.modules.render;
 
+import java.awt.Color;
+
 import me.ascendit.Main;
 import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
@@ -18,6 +20,8 @@ public class ModuleModuleList extends Module
 	protected int textWidth;
 	protected int textHeight;
 	protected ScaledResolution resolution;
+	protected int color = 0;
+	protected float counter = 0;
 	
 	public ModuleModuleList() {
 		super("ModuleList", "Shows all active modules", Category.RENDER);
@@ -51,7 +55,13 @@ public class ModuleModuleList extends Module
 	@Override
 	public void onRender(RenderGameOverlayEvent.Text event) 
 	{
-		textY = 1;
+		textY = 2;
+		counter += 0.005;
+		if(counter >= 1)
+		{
+			counter = 0;
+		}	
+		color = Color.HSBtoRGB(counter, 1, 1);
 		
 		resolution = event.resolution;
 		width = resolution.getScaledWidth();
@@ -63,8 +73,9 @@ public class ModuleModuleList extends Module
 			{
 				textWidth = mc.fontRendererObj.getStringWidth(module.getName());
 				textHeight = mc.fontRendererObj.FONT_HEIGHT;
-				mc.fontRendererObj.drawString(module.getName(), width-(textWidth+1), textY, 0xf05454);
-				textY += textHeight;
+				
+				mc.fontRendererObj.drawString(module.getName(), width-(textWidth+2), textY, color, true);
+				textY += textHeight+1;
 			}
 		}
 	}
