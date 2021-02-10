@@ -57,6 +57,11 @@ public abstract class Module {
 		this.keyBind = keyBind;
 	}
 	
+	public String getName()
+	{
+		return this.name;
+	}
+	
 	public abstract void onEnable();
 	public abstract void onDisable();
 	public abstract void onTick();

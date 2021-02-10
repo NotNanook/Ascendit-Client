@@ -22,7 +22,7 @@ public class ModuleEasyHiveBed extends Module{
 	
 	public ModuleEasyHiveBed()
 	{
-		super("Easy Hive bed", "Makes breaking beds from above on HiveMC easy", Category.MISC);
+		super("EasyHiveBed", "Makes breaking beds from above on HiveMC easy", Category.MISC);
 		this.registerModule();
 		this.keyBind = Keyboard.KEY_O;
 	}

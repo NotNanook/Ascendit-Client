@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.lwjgl.opengl.Display;
 
+import me.ascendit.commands.Command;
+import me.ascendit.commands.toggleCommand;
 import me.ascendit.events.onInteractEvent;
 import me.ascendit.events.onKeyInputEvent;
 import me.ascendit.events.onLivingUpdateEvent;
@@ -36,6 +38,10 @@ public class Main
     public static ModuleEasyHiveBed easyHiveBed;
     public static ModuleSprint sprint;
     
+    // commands
+    public static ArrayList<Command> commands;
+    public static Command toggle;
+    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -48,6 +54,10 @@ public class Main
     	esp = new ModuleESP();
     	easyHiveBed = new ModuleEasyHiveBed();
     	sprint = new ModuleSprint();
+    	
+    	// commands
+    	commands = new ArrayList<Command>();
+    	toggle = new toggleCommand();
     }
     
     @EventHandler
