@@ -6,6 +6,7 @@ import org.lwjgl.opengl.Display;
 
 import me.ascendit.commands.Command;
 import me.ascendit.commands.CommandFastplace;
+import me.ascendit.commands.CommandFurnaceCommand;
 import me.ascendit.commands.CommandToggle;
 import me.ascendit.events.onInteractEvent;
 import me.ascendit.events.onKeyInputEvent;
@@ -48,6 +49,7 @@ public class Main
     public static ArrayList<Command> commands;
     public static Command toggle;
     public static Command setDelay;
+    public static Command furnace;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -68,6 +70,7 @@ public class Main
     	commands = new ArrayList<Command>();
     	toggle = new CommandToggle();
     	setDelay = new CommandFastplace();
+    	furnace = new CommandFurnaceCommand();
     }
     
     @EventHandler
