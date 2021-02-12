@@ -35,12 +35,14 @@ public abstract class Module {
 	{
 		enabled = true;
 		this.onEnable();
+		mc.thePlayer.playSound("random.click", 0.5f, 1f);
 	}
 	
 	public void disable()
 	{
 		enabled = false;
 		this.onDisable();
+		mc.thePlayer.playSound("random.click", 0.5f, 1f);
 	}
 	
 	public boolean isEnabled()

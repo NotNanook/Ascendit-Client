@@ -11,7 +11,7 @@ import net.minecraft.util.EnumChatFormatting;
 public class CommandFurnaceCommand extends Command {
 		
 	public CommandFurnaceCommand() {
-		super("furnacecommand", "Force OP method with furnace", "Usage: .furnaceop <command>");
+		super("furnacecommand", "Gives you a furnace wtih spawners that generate Command Blocks", "Usage: .furnacecommand <command>");
 		this.registerCommand();
 	}
 

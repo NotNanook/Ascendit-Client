@@ -45,7 +45,7 @@ public class ModuleEasyHiveBed extends Module{
 	@Override
 	public void onTick() 
 	{
-		if(counter == 5 && !Main.projectileAimer.isEnabled())
+		if(counter >= 5 && !Main.projectileAimer.isEnabled())
 		{
 			counter = 0;
 			for(int x = radius; x >= -radius; x--)
@@ -56,7 +56,6 @@ public class ModuleEasyHiveBed extends Module{
 	                {
 	                	BlockPos blockPos = new BlockPos(mc.thePlayer.posX + x, mc.thePlayer.posY + y, mc.thePlayer.posZ + z);
 	                	BlockPos blockAbove = new BlockPos(mc.thePlayer.posX + x, mc.thePlayer.posY + y + 1, mc.thePlayer.posZ + z);
-	                	
 	                	if(mc.theWorld.getBlockState(blockPos).getBlock() instanceof BlockBed && mc.theWorld.getBlockState(blockAbove).getBlock().getMaterial() != Material.glass)
 	                    {
 	                		try
