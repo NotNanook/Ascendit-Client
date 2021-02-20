@@ -21,10 +21,10 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 public class ModuleProjectileAimer extends Module
 {
 	
-	public static EntityOtherPlayerMP fakePlayer = null;
-	public static double oldX;
-	public static double oldY;
-	public static double oldZ;
+	private EntityOtherPlayerMP fakePlayer = null;
+	private double oldX;
+	private double oldY;
+	private double oldZ;
 	
 	public ModuleProjectileAimer()
 	{

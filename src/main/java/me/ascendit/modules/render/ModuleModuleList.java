@@ -14,16 +14,17 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 public class ModuleModuleList extends Module
 {
 	
-	protected int textY;
-	protected int width;
-	protected int height;
-	protected int textWidth;
-	protected int textHeight;
-	protected ScaledResolution resolution;
-	protected int color = 0;
-	protected float counter = 0;
+	private int textY;
+	private int width;
+	private int height;
+	private int textWidth;
+	private int textHeight;
+	private ScaledResolution resolution;
+	private int color = 0;
+	private float counter = 0;
 	
-	public ModuleModuleList() {
+	public ModuleModuleList() 
+	{
 		super("ModuleList", "Shows all active modules", Category.RENDER);
 		this.registerModule();
 	}
@@ -32,14 +33,12 @@ public class ModuleModuleList extends Module
 	public void onEnable() 
 	{
 		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "ModuleList" + EnumChatFormatting.WHITE + "]: ModuleList enabled"));
-
 	}
 
 	@Override
 	public void onDisable() 
 	{
 		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "ModuleList" + EnumChatFormatting.WHITE + "]: ModuleList disabled"));
-
 	}
 
 	@Override
@@ -79,5 +78,4 @@ public class ModuleModuleList extends Module
 			}
 		}
 	}
-
 }

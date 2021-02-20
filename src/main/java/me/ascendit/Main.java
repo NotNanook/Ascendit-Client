@@ -6,6 +6,7 @@ import org.lwjgl.opengl.Display;
 
 import me.ascendit.commands.Command;
 import me.ascendit.commands.CommandBind;
+import me.ascendit.commands.CommandFakeCheater;
 import me.ascendit.commands.CommandFastplace;
 import me.ascendit.commands.CommandFurnaceCommand;
 import me.ascendit.commands.CommandToggle;
@@ -15,8 +16,10 @@ import me.ascendit.events.onLivingUpdateEvent;
 import me.ascendit.events.onPacketOutEvent;
 import me.ascendit.events.onTextRenderEvent;
 import me.ascendit.modules.Module;
+import me.ascendit.modules.combat.ModuleAutoclicker;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
 import me.ascendit.modules.misc.ModuleEasyHiveBed;
+import me.ascendit.modules.misc.ModuleFakeCheater;
 import me.ascendit.modules.misc.ModuleFastplace;
 import me.ascendit.modules.movement.ModuleSprint;
 import me.ascendit.modules.render.ModuleESP;
@@ -45,6 +48,8 @@ public class Main
     public static ModuleSprint sprint;
     public static ModuleFullbright fullbright;
     public static ModuleModuleList moduleList;
+    public static ModuleAutoclicker autoclicker;
+    public static ModuleFakeCheater fakeCheater;
     
     // commands
     public static ArrayList<Command> commands;
@@ -52,6 +57,7 @@ public class Main
     public static Command setDelay;
     public static Command furnace;
     public static Command bind;
+    public static Command fakeCheat;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -67,6 +73,8 @@ public class Main
     	sprint = new ModuleSprint();
     	fullbright = new ModuleFullbright();
     	moduleList = new ModuleModuleList();
+    	autoclicker = new ModuleAutoclicker();
+    	fakeCheater = new ModuleFakeCheater();
     	
     	// commands
     	commands = new ArrayList<Command>();
@@ -74,6 +82,7 @@ public class Main
     	setDelay = new CommandFastplace();
     	furnace = new CommandFurnaceCommand();
     	bind = new CommandBind();
+    	fakeCheat = new CommandFakeCheater();
     }
     
     @EventHandler
