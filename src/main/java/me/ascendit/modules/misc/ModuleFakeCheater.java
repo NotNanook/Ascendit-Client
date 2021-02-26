@@ -45,7 +45,8 @@ public class ModuleFakeCheater extends Module
 		{
 			// relink players in case they died or dc'd
 			reLinkPlayers(player);
-			player.setAngles(rd.nextFloat()*360, player.cameraPitch+(rd.nextFloat()*180)-90);
+			player.rotationPitch = rd.nextFloat()*360;
+			player.rotationYawHead = player.cameraPitch+(rd.nextFloat()*360)-180;
 		}
 	}
 

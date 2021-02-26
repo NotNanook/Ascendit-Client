@@ -16,12 +16,14 @@ public class onPacketOutEvent {
 	public void outgoing(PacketEvent.Outgoing event) {
 		Packet<?> packet = event.getPacket();
 		Minecraft mc = Minecraft.getMinecraft();
-
+		
+		// projectile aimer freecam
 		if((packet instanceof C03PacketPlayer || packet instanceof C0BPacketEntityAction) && Main.projectileAimer.isEnabled()) 
 		{
 			event.setCanceled(true);
 		}
 		
+		// chat commands
 		if(packet instanceof C01PacketChatMessage)
 		{
 			C01PacketChatMessage messagePacket = (C01PacketChatMessage) packet;
