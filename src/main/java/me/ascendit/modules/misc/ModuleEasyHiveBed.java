@@ -15,7 +15,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
 import net.minecraft.util.Vec3i;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleEasyHiveBed extends Module{
 	
@@ -87,7 +89,12 @@ public class ModuleEasyHiveBed extends Module{
 	}
 	
 	@Override
-	public void onRender(RenderGameOverlayEvent.Text event) 
+	public void onRender2d(RenderGameOverlayEvent.Text event) 
 	{
+	}
+	
+	@Override
+	public void onRender3d(RenderWorldLastEvent event)
+	{	
 	}
 }

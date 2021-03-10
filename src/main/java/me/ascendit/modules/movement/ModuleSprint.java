@@ -8,6 +8,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -45,7 +46,12 @@ public class ModuleSprint extends Module {
     }
     
     @Override
-	public void onRender(RenderGameOverlayEvent.Text event) 
+	public void onRender2d(RenderGameOverlayEvent.Text event) 
 	{
+	}
+    
+    @Override
+	public void onRender3d(RenderWorldLastEvent event)
+	{	
 	}
 }

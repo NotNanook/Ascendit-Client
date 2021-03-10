@@ -14,7 +14,8 @@ import me.ascendit.events.onInteractEvent;
 import me.ascendit.events.onKeyInputEvent;
 import me.ascendit.events.onLivingUpdateEvent;
 import me.ascendit.events.onPacketOutEvent;
-import me.ascendit.events.onTextRenderEvent;
+import me.ascendit.events.onRender2d;
+import me.ascendit.events.onRender3d;
 import me.ascendit.modules.Module;
 import me.ascendit.modules.combat.ModuleAutoclicker;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
@@ -92,7 +93,8 @@ public class Main
     	MinecraftForge.EVENT_BUS.register(new onKeyInputEvent());
     	MinecraftForge.EVENT_BUS.register(new onLivingUpdateEvent());
     	MinecraftForge.EVENT_BUS.register(new onInteractEvent());
-    	MinecraftForge.EVENT_BUS.register(new onTextRenderEvent());
+    	MinecraftForge.EVENT_BUS.register(new onRender2d());
+    	MinecraftForge.EVENT_BUS.register(new onRender3d());
     	
     	
     	// network

@@ -16,7 +16,9 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleProjectileAimer extends Module
 {
@@ -152,8 +154,13 @@ public class ModuleProjectileAimer extends Module
 	}
 	
 	@Override
-	public void onRender(RenderGameOverlayEvent.Text event) 
+	public void onRender2d(RenderGameOverlayEvent.Text event) 
 	{
+	}
+	
+	@Override
+	public void onRender3d(RenderWorldLastEvent event)
+	{	
 	}
 	
 	public double getDirection() 

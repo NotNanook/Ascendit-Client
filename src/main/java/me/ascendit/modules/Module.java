@@ -5,7 +5,9 @@ import org.lwjgl.input.Keyboard;
 import me.ascendit.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public abstract class Module {
 	
@@ -35,14 +37,14 @@ public abstract class Module {
 	{
 		enabled = true;
 		this.onEnable();
-		mc.thePlayer.playSound("random.click", 0.5f, 1f);
+		//mc.thePlayer.playSound("random.click", 0.5f, 1f);
 	}
 	
 	public void disable()
 	{
 		enabled = false;
 		this.onDisable();
-		mc.thePlayer.playSound("random.click", 0.5f, 1f);
+		//mc.thePlayer.playSound("random.click", 0.5f, 1f);
 	}
 	
 	public boolean isEnabled()
@@ -69,5 +71,6 @@ public abstract class Module {
 	public abstract void onDisable();
 	public abstract void onTick();
 	public abstract void onInteract(PlayerInteractEvent event);
-	public abstract void onRender(RenderGameOverlayEvent.Text event);
+	public abstract void onRender2d(RenderGameOverlayEvent.Text event);
+	public abstract void onRender3d(RenderWorldLastEvent event);
 }

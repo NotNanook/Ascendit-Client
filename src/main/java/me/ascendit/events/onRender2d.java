@@ -5,16 +5,16 @@ import me.ascendit.modules.Module;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class onTextRenderEvent 
+public class onRender2d 
 {
 	@SubscribeEvent
-	public void onTextRender(RenderGameOverlayEvent.Text event)
+	public void onRender(RenderGameOverlayEvent.Text event)
 	{
 		for(Module module : Main.modules)
 		{
 			if(module.isEnabled())
 			{
-				module.onRender(event);
+				module.onRender2d(event);
 			}
 		}
 	}

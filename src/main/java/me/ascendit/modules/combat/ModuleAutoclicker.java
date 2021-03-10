@@ -8,7 +8,9 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.Text;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleAutoclicker extends Module
 {
@@ -56,7 +58,12 @@ public class ModuleAutoclicker extends Module
 	}
 
 	@Override
-	public void onRender(Text event) 
+	public void onRender2d(Text event) 
+	{
+	}
+
+	@Override
+	public void onRender3d(RenderWorldLastEvent event) 
 	{
 	}
 }

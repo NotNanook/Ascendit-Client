@@ -9,7 +9,9 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleModuleList extends Module
 {
@@ -52,30 +54,38 @@ public class ModuleModuleList extends Module
 	}
 	
 	@Override
-	public void onRender(RenderGameOverlayEvent.Text event) 
+	public void onRender2d(RenderGameOverlayEvent.Text event) 
 	{
-		textY = 2;
-		counter += 0.005;
-		if(counter >= 1)
+		if(!mc.gameSettings.showDebugInfo)
 		{
-			counter = 0;
-		}	
-		color = Color.HSBtoRGB(counter, 1, 1);
-		
-		resolution = event.resolution;
-		width = resolution.getScaledWidth();
-		height = resolution.getScaledHeight();
-		
-		for(Module module : Main.modules)
-		{
-			if(module.isEnabled())
+			textY = 2;
+			counter += 0.005;
+			if(counter >= 1)
 			{
-				textWidth = mc.fontRendererObj.getStringWidth(module.getName());
-				textHeight = mc.fontRendererObj.FONT_HEIGHT;
-				
-				mc.fontRendererObj.drawString(module.getName(), width-(textWidth+2), textY, color, true);
-				textY += textHeight+1;
+				counter = 0;
+			}	
+			color = Color.HSBtoRGB(counter, 1, 1);
+			
+			resolution = event.resolution;
+			width = resolution.getScaledWidth();
+			height = resolution.getScaledHeight();
+			
+			for(Module module : Main.modules)
+			{
+				if(module.isEnabled())
+				{
+					textWidth = mc.fontRendererObj.getStringWidth(module.getName());
+					textHeight = mc.fontRendererObj.FONT_HEIGHT;
+					
+					mc.fontRendererObj.drawString(module.getName(), width-(textWidth+2), textY, color, true);
+					textY += textHeight+1;
+				}
 			}
 		}
+	}
+
+	@Override
+	public void onRender3d(RenderWorldLastEvent event) 
+	{
 	}
 }
