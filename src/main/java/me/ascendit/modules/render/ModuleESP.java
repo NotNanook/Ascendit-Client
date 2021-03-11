@@ -56,7 +56,7 @@ public class ModuleESP extends Module
 	{	
 		for(EntityPlayer player : mc.theWorld.playerEntities)
 		{
-			if(player.getName() == mc.thePlayer.getName())
+			if(player.getName() != mc.thePlayer.getName())
 			{
 				RenderManager renderManager = mc.getRenderManager();
 				Tessellator tessellator = Tessellator.getInstance();
