@@ -59,6 +59,7 @@ public class Main
     public static Command furnace;
     public static Command bind;
     public static Command fakeCheat;
+    public static Command help;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)

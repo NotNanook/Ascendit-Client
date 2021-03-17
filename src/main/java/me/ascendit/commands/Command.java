@@ -30,7 +30,12 @@ public abstract class Command {
 	
 	public String getSyntax()
 	{
-		return syntax;
+		return this.syntax;
+	}
+	
+	public String getDescription()
+	{
+		return this.description;
 	}
 
 	public abstract void onCommand(String[] args);
