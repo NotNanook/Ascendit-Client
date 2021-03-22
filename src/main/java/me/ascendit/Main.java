@@ -23,10 +23,13 @@ import me.ascendit.modules.misc.ModuleEasyHiveBed;
 import me.ascendit.modules.misc.ModuleFakeCheater;
 import me.ascendit.modules.misc.ModuleFastplace;
 import me.ascendit.modules.movement.ModuleSprint;
+import me.ascendit.modules.render.ModuleCameraClip;
 import me.ascendit.modules.render.ModuleESP;
 import me.ascendit.modules.render.ModuleFullbright;
 import me.ascendit.modules.render.ModuleModuleList;
+import me.ascendit.modules.render.ModuleTrueSight;
 import me.ascendit.network.ChannelHandlerInput;
+import me.ascendit.utils.ModuleList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -39,9 +42,9 @@ public class Main
 {
     public static final String MODID = "ascendit";
     public static final String VERSION = "0.1";
-    
+
     // modules
-    public static ArrayList<Module> modules;
+    public static ModuleList modules;
     public static ModuleFastplace fastplace;
     public static ModuleProjectileAimer projectileAimer;
     public static ModuleESP esp;
@@ -51,6 +54,8 @@ public class Main
     public static ModuleModuleList moduleList;
     public static ModuleAutoclicker autoclicker;
     public static ModuleFakeCheater fakeCheater;
+    public static ModuleCameraClip cameraClip;
+    public static ModuleTrueSight trueSight;
     
     // commands
     public static ArrayList<Command> commands;
@@ -67,7 +72,7 @@ public class Main
     	Display.setTitle("Ascendit Client");
     	
     	// modules
-    	modules = new ArrayList<Module>();
+    	modules = new ModuleList(new ArrayList<Module>());
     	fastplace = new ModuleFastplace();
     	projectileAimer = new ModuleProjectileAimer();
     	esp = new ModuleESP();
@@ -77,6 +82,8 @@ public class Main
     	moduleList = new ModuleModuleList();
     	autoclicker = new ModuleAutoclicker();
     	fakeCheater = new ModuleFakeCheater();
+    	cameraClip = new ModuleCameraClip();
+    	trueSight = new ModuleTrueSight();
     	
     	// commands
     	commands = new ArrayList<Command>();
@@ -96,7 +103,6 @@ public class Main
     	MinecraftForge.EVENT_BUS.register(new onInteractEvent());
     	MinecraftForge.EVENT_BUS.register(new onRender2d());
     	MinecraftForge.EVENT_BUS.register(new onRender3d());
-    	
     	
     	// network
     	MinecraftForge.EVENT_BUS.register(new ChannelHandlerInput());

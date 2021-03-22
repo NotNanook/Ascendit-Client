@@ -10,7 +10,7 @@ public class onRender2d
 	@SubscribeEvent
 	public void onRender(RenderGameOverlayEvent.Text event)
 	{
-		for(Module module : Main.modules)
+		for(Module module : Main.modules.moduleList)
 		{
 			if(module.isEnabled())
 			{

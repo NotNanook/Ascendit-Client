@@ -18,7 +18,7 @@ public class CommandFastplace extends Command {
     {
         if (args.length != 2)
         {
-        	mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+        	this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
             return;
         } 
         else 
@@ -27,12 +27,12 @@ public class CommandFastplace extends Command {
             {
                 int newDelay = Integer.parseInt(args[1]);
                 Main.fastplace.setDelay(newDelay);
-                mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "Fastplace" + EnumChatFormatting.WHITE + "]: Delay set to " + args[1]));
+                this.sendMessage("Delay set to " + EnumChatFormatting.BOLD + args[1], EnumChatFormatting.WHITE);
 
             } 
             catch (NumberFormatException e) 
             {
-            	mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+            	this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
                 return;
             }
         }

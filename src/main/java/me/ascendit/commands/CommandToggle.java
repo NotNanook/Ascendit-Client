@@ -20,11 +20,11 @@ public class CommandToggle extends Command
 	{
 		if(args.length != 2)
 		{
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+			this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
 			return;
 		}
 		
-		for(Module module : Main.modules)
+		for(Module module : Main.modules.moduleList)
 		{
 			if(module.getName().equalsIgnoreCase(args[1]))
 			{
@@ -41,6 +41,6 @@ public class CommandToggle extends Command
 			}
 		}
 		
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+		this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
 	}
 }

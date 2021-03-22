@@ -6,12 +6,7 @@ import me.ascendit.Main;
 import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleModuleList extends Module
 {
@@ -29,31 +24,11 @@ public class ModuleModuleList extends Module
 	{
 		super("ModuleList", "Shows all active modules", Category.RENDER);
 		this.registerModule();
-	}
-
-	@Override
-	public void onEnable() 
-	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "ModuleList" + EnumChatFormatting.WHITE + "]: ModuleList enabled"));
-	}
-
-	@Override
-	public void onDisable() 
-	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "ModuleList" + EnumChatFormatting.WHITE + "]: ModuleList disabled"));
-	}
-
-	@Override
-	public void onTick() 
-	{
-	}
-
-	@Override
-	public void onInteract(PlayerInteractEvent event) 
-	{
+		
+		// make it turned on by default
+		this.enabled = true;
 	}
 	
-	@Override
 	public void onRender2d(RenderGameOverlayEvent.Text event) 
 	{
 		if(!mc.gameSettings.showDebugInfo)
@@ -70,7 +45,7 @@ public class ModuleModuleList extends Module
 			width = resolution.getScaledWidth();
 			height = resolution.getScaledHeight();
 			
-			for(Module module : Main.modules)
+			for(Module module : Main.modules.moduleList)
 			{
 				if(module.isEnabled())
 				{
@@ -82,10 +57,5 @@ public class ModuleModuleList extends Module
 				}
 			}
 		}
-	}
-
-	@Override
-	public void onRender3d(RenderWorldLastEvent event) 
-	{
 	}
 }

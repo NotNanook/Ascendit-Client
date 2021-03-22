@@ -10,11 +10,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ModuleESP extends Module
 {
@@ -24,34 +20,6 @@ public class ModuleESP extends Module
 		this.registerModule();
 	}
 	
-	@Override
-	public void onEnable() 
-	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "ESP" + EnumChatFormatting.WHITE + "]: ESP enabled"));
-	}
-
-	@Override
-	public void onDisable() 
-	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "ESP" + EnumChatFormatting.WHITE + "]: ESP disabled"));
-	}
-
-	@Override
-	public void onTick() 
-	{
-	}
-
-	@Override
-	public void onInteract(PlayerInteractEvent event) 
-	{
-	}
-	
-	@Override
-	public void onRender2d(RenderGameOverlayEvent.Text event) 
-	{
-	}
-	
-	@Override
 	public void onRender3d(RenderWorldLastEvent event)
 	{	
 		for(EntityPlayer player : mc.theWorld.playerEntities)

@@ -12,7 +12,7 @@ public class onKeyInputEvent {
 	@SubscribeEvent
 	public void onKeyInput(InputEvent.KeyInputEvent e)
 	{
-		for(Module module : Main.modules)
+		for(Module module : Main.modules.moduleList)
 		{
 			if(module.getKeyBind() == Keyboard.getEventKey() && Keyboard.getEventKeyState())
 			{

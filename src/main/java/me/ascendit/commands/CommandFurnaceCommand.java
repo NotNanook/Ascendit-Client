@@ -23,9 +23,9 @@ public class CommandFurnaceCommand extends Command {
 				command += args[i] + " ";			
 			}
 			mc.thePlayer.sendQueue.addToSendQueue(new C10PacketCreativeInventoryAction(36, this.addItemtoFurnace(this.generateOPItem(command))));
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.GREEN + "You got the item"));		
+			this.sendMessage("You got the item", EnumChatFormatting.GREEN);
 		} else {
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "You have to be in creative mode to use this command"));
+			this.sendMessage("You have to be in creative mode", EnumChatFormatting.RED);
 			return;
 		}
 	}

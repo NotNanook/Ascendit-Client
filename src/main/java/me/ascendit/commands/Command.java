@@ -2,6 +2,8 @@ package me.ascendit.commands;
 
 import me.ascendit.Main;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 public abstract class Command {
 	
@@ -36,6 +38,13 @@ public abstract class Command {
 	public String getDescription()
 	{
 		return this.description;
+	}
+	
+	public void sendMessage(String msg, EnumChatFormatting color)
+	{
+		ChatComponentText message = new ChatComponentText(msg);
+		message.getChatStyle().setColor(color);
+		mc.thePlayer.addChatComponentMessage(message);
 	}
 
 	public abstract void onCommand(String[] args);

@@ -7,12 +7,6 @@ import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.Text;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleFakeCheater extends Module
 {
@@ -28,19 +22,6 @@ public class ModuleFakeCheater extends Module
 		this.rd = new Random();
 	}
 
-	@Override
-	public void onEnable() 
-	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "Fakecheater" + EnumChatFormatting.WHITE + "]: Fakecheater enabled"));
-	}
-
-	@Override
-	public void onDisable() 
-	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "Fakecheater" + EnumChatFormatting.WHITE + "]: Fakecheater disabled"));
-	}
-
-	@Override
 	public void onTick() 
 	{
 		for(EntityPlayer player : this.fakeCheatPlayers)
@@ -50,21 +31,6 @@ public class ModuleFakeCheater extends Module
 			player.rotationPitch = rd.nextFloat()*360;
 			player.rotationYawHead = player.cameraPitch+(rd.nextFloat()*360)-180;
 		}
-	}
-
-	@Override
-	public void onInteract(PlayerInteractEvent event) 
-	{
-	}
-
-	@Override
-	public void onRender2d(Text event) 
-	{
-	}
-	
-	@Override
-	public void onRender3d(RenderWorldLastEvent event)
-	{	
 	}
 	
 	public ArrayList<EntityPlayer> getPlayerList()

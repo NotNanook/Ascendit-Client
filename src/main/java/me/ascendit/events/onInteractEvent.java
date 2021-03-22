@@ -10,7 +10,7 @@ public class onInteractEvent {
 	@SubscribeEvent
 	public void onInteract(PlayerInteractEvent event)
 	{
-		for(Module module : Main.modules)
+		for(Module module : Main.modules.moduleList)
 		{
 			if(module.isEnabled())
 			{

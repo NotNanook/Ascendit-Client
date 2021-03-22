@@ -11,14 +11,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vector3d;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ModuleProjectileAimer extends Module
 {
@@ -35,7 +31,41 @@ public class ModuleProjectileAimer extends Module
 		this.keyBind = Keyboard.KEY_F;
 	}
 	
-	@Override
+	public void onEnable() 
+	{
+		// Get old player position
+		oldX = mc.thePlayer.posX;
+		oldY = mc.thePlayer.posY;
+		oldZ = mc.thePlayer.posZ;
+					
+		// Create a fake player and make him a "copy" of the real player
+		fakePlayer = new EntityOtherPlayerMP(mc.theWorld, mc.thePlayer.getGameProfile());
+		fakePlayer.clonePlayer(mc.thePlayer, true);
+		fakePlayer.rotationYawHead = mc.thePlayer.rotationYawHead;
+		fakePlayer.copyLocationAndAnglesFrom(mc.thePlayer);
+
+		// Add him to the world
+		mc.theWorld.addEntityToWorld(-1000, fakePlayer);
+					
+		// Give the player no-clip so he can fly and phase thru blocks
+		mc.thePlayer.noClip = true;
+	}
+
+	public void onDisable() 
+	{		
+		// Update player angle
+		mc.thePlayer.setPositionAndRotation(oldX, oldY, oldZ, mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch);
+					
+		// Remove fake player
+		mc.theWorld.removeEntityFromWorld(fakePlayer.getEntityId());
+		fakePlayer = null;
+					
+		// Reset player motion
+		mc.thePlayer.motionX = 0;
+		mc.thePlayer.motionY = 0;
+		mc.thePlayer.motionZ = 0;
+	}
+	
 	public void onTick() 
 	{
 		// Make player able to fly and phase thru blocks
@@ -63,51 +93,7 @@ public class ModuleProjectileAimer extends Module
 		mc.thePlayer.motionX = -Math.sin(yaw) * 0.8;
 		mc.thePlayer.motionZ = Math.cos(yaw) * 0.8;
 	}
-
-	@Override
-	public void onEnable() 
-	{
-		// Enable
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "ProjectileAimer" + EnumChatFormatting.WHITE + "]: Freecam enabled"));
-
-		// Get old player position
-		oldX = mc.thePlayer.posX;
-		oldY = mc.thePlayer.posY;
-		oldZ = mc.thePlayer.posZ;
-					
-		// Create a fake player and make him a "copy" of the real player
-		fakePlayer = new EntityOtherPlayerMP(mc.theWorld, mc.thePlayer.getGameProfile());
-		fakePlayer.clonePlayer(mc.thePlayer, true);
-		fakePlayer.rotationYawHead = mc.thePlayer.rotationYawHead;
-		fakePlayer.copyLocationAndAnglesFrom(mc.thePlayer);
-
-		// Add him to the world
-		mc.theWorld.addEntityToWorld(-1000, fakePlayer);
-					
-		// Give the player no-clip so he can fly and phase thru blocks
-		mc.thePlayer.noClip = true;
-	}
-
-	@Override
-	public void onDisable() 
-	{
-		// Disable
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "ProjectileAimer" + EnumChatFormatting.WHITE + "]: Freecam disabled"));
-					
-		// Update player angle
-		mc.thePlayer.setPositionAndRotation(oldX, oldY, oldZ, mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch);
-					
-		// Remove fake player
-		mc.theWorld.removeEntityFromWorld(fakePlayer.getEntityId());
-		fakePlayer = null;
-					
-		// Reset player motion
-		mc.thePlayer.motionX = 0;
-		mc.thePlayer.motionY = 0;
-		mc.thePlayer.motionZ = 0;
-	}
 	
-	@Override
 	public void onInteract(PlayerInteractEvent event) 
 	{
 		BlockPos pos = event.pos;
@@ -143,27 +129,16 @@ public class ModuleProjectileAimer extends Module
 			
 			// if couldnt find pitch, then write that to the player
 			if (calculatePitch(mc, nYaw, pos)) {
-				mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "ProjectileAimer" + EnumChatFormatting.WHITE + "]: Found angle "
-																			+ EnumChatFormatting.GRAY + "(" + String.valueOf(mc.thePlayer.rotationYaw) + " " + String.valueOf(mc.thePlayer.rotationPitch) + ")"));
+				this.sendMessage("Found valid angle", EnumChatFormatting.GREEN);
 			}
 			else
 			{
-				mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "ProjectileAimer" + EnumChatFormatting.WHITE + "]: No valid angle found"));
+				this.sendMessage("No valid angle found", EnumChatFormatting.RED);
 			}
 		}
 	}
 	
-	@Override
-	public void onRender2d(RenderGameOverlayEvent.Text event) 
-	{
-	}
-	
-	@Override
-	public void onRender3d(RenderWorldLastEvent event)
-	{	
-	}
-	
-	public double getDirection() 
+	private double getDirection() 
 	{
 		float rotationYaw = mc.thePlayer.rotationYaw;
 
@@ -185,7 +160,7 @@ public class ModuleProjectileAimer extends Module
 		return Math.toRadians(rotationYaw);
 	}
 	
-	public static boolean calculatePitch(Minecraft mc, double nYaw, BlockPos pos) {
+	private boolean calculatePitch(Minecraft mc, double nYaw, BlockPos pos) {
 		
 		// fully charged bow
 		double powerMod = 3;

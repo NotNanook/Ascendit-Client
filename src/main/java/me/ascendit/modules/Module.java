@@ -4,12 +4,13 @@ import org.lwjgl.input.Keyboard;
 
 import me.ascendit.Main;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-public abstract class Module {
+public class Module implements Comparable<Module>{
 	
 	protected String name;
 	protected String description;
@@ -30,21 +31,52 @@ public abstract class Module {
 	
 	public void registerModule()
 	{		
-		Main.modules.add(this);
+		Main.modules.addModule(this);
 	}
 	
 	public void enable()
 	{
 		enabled = true;
+		this.sendMessage(this.getName() + " is now enabled", EnumChatFormatting.GREEN);
 		this.onEnable();
-		//mc.thePlayer.playSound("random.click", 0.5f, 1f);
 	}
 	
 	public void disable()
 	{
 		enabled = false;
+		this.sendMessage(this.getName() + " is now disabled", EnumChatFormatting.RED);
 		this.onDisable();
-		//mc.thePlayer.playSound("random.click", 0.5f, 1f);
+	}
+	
+	public void onEnable() 
+	{
+	}
+	
+	public void onDisable() 
+	{
+	}
+	
+	public void onTick() 
+	{
+	}
+	
+	public void onInteract(PlayerInteractEvent event) 
+	{
+	}
+	
+	public void onRender2d(RenderGameOverlayEvent.Text event) 
+	{
+	}
+	
+	public void onRender3d(RenderWorldLastEvent event) 
+	{
+	}
+	
+	public void sendMessage(String msg, EnumChatFormatting color)
+	{
+		ChatComponentText message = new ChatComponentText(msg);
+		message.getChatStyle().setColor(color);
+		mc.thePlayer.addChatComponentMessage(message);
 	}
 	
 	public boolean isEnabled()
@@ -67,10 +99,13 @@ public abstract class Module {
 		return this.name;
 	}
 	
-	public abstract void onEnable();
-	public abstract void onDisable();
-	public abstract void onTick();
-	public abstract void onInteract(PlayerInteractEvent event);
-	public abstract void onRender2d(RenderGameOverlayEvent.Text event);
-	public abstract void onRender3d(RenderWorldLastEvent event);
+	// for sorting by module length
+	@Override
+	public int compareTo(Module compareto)
+	{
+		int thisLength = this.name.length();
+		int thatLength = compareto.name.length();
+		
+		return thatLength - thisLength;
+	}
 }

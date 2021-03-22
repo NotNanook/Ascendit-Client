@@ -11,7 +11,7 @@ public class onRender3d
 	@SubscribeEvent
 	public void onRender(RenderWorldLastEvent event)
 	{
-		for(Module module : Main.modules)
+		for(Module module : Main.modules.moduleList)
 		{
 			if(module.isEnabled())
 			{

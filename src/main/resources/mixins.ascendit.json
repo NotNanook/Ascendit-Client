@@ -1,0 +1,11 @@
+{
+	"package": "me.ascendit.mixin.mixins",
+	"refmap": "mixins.ascendit.refmap.json",
+	"required": true,
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"MixinGuiMainMenu",
+		"MixinCameraClip",
+		"MixinWorldClient"
+	]
+}

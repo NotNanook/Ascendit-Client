@@ -8,12 +8,7 @@ import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class ModuleFastplace extends Module
@@ -29,25 +24,15 @@ public class ModuleFastplace extends Module
 		this.delay = 1;
 	}
 
-	@Override
-	public void onTick() 
-	{
-	}
-
-	@Override
 	public void onEnable() 
 	{
 		field = ReflectionHelper.findField(Minecraft.class, "rightClickDelayTimer", "field_71467_ac", "ap");
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "Fastplace" + EnumChatFormatting.WHITE + "]: Fastplace enabled"));
 	}
 
-	@Override
 	public void onDisable() 
 	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "Fastplace" + EnumChatFormatting.WHITE + "]: Fastplace disabled"));
 	}
 
-	@Override
 	public void onInteract(PlayerInteractEvent event) 
 	{
 		if(mc.thePlayer.inventory.getStackInSlot(mc.thePlayer.inventory.currentItem) != null && (mc.thePlayer.inventory.getStackInSlot(mc.thePlayer.inventory.currentItem).getItem() instanceof ItemBlock))
@@ -65,15 +50,5 @@ public class ModuleFastplace extends Module
 	public void setDelay(int delay)
 	{
 		this.delay = delay;
-	}
-
-	@Override
-	public void onRender2d(RenderGameOverlayEvent.Text event) 
-	{
-	}
-	
-	@Override
-	public void onRender3d(RenderWorldLastEvent event)
-	{	
 	}
 }

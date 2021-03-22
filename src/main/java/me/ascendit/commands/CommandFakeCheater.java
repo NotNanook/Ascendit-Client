@@ -24,11 +24,11 @@ public class CommandFakeCheater extends Command
 			{
 				// clear list
 				Main.fakeCheater.getPlayerList().clear();
-				mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "Cleared fake cheater list"));
+				this.sendMessage("Cleared fakecheater list", EnumChatFormatting.GREEN);
 				return;
 			}
 		}
-		else if(args.length == 3)
+		if(args.length == 3)
 		{
 			if(args[1].equalsIgnoreCase("add"))
 			{
@@ -41,7 +41,7 @@ public class CommandFakeCheater extends Command
 						if(player.getName().equalsIgnoreCase(args[2]) && !Main.fakeCheater.getPlayerList().contains(player))
 						{
 							Main.fakeCheater.getPlayerList().add(player);
-							mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Added player " + player.getName()));
+							this.sendMessage("Added player " + player.getName(), EnumChatFormatting.GREEN);
 							return;
 						}
 					}
@@ -55,19 +55,20 @@ public class CommandFakeCheater extends Command
 					if(player.getName().equalsIgnoreCase(args[2]) && Main.fakeCheater.getPlayerList().contains(player))
 					{
 						Main.fakeCheater.getPlayerList().remove(player);
-						mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "Removed player " + player.getName()));
+						this.sendMessage("Removed player " + player.getName(), EnumChatFormatting.GREEN);
 						return;
 					}
 				}
+				this.sendMessage("It seems that the player " + args[2] + " doesnt exist", EnumChatFormatting.RED);
 			}
 			else
 			{
-				mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+				this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
 			}
 		}
 		else
 		{
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+			this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
             return;
 		}
 	}

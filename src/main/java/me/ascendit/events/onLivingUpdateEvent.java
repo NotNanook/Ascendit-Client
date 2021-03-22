@@ -10,7 +10,7 @@ public class onLivingUpdateEvent
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent e)
 	{
-		for(Module module : Main.modules)
+		for(Module module : Main.modules.moduleList)
 		{
 			if(module.isEnabled())
 			{

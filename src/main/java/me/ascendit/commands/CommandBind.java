@@ -20,19 +20,19 @@ public class CommandBind extends Command{
     {
 		if(args.length == 3)
 		{
-			for(Module module : Main.modules)
+			for(Module module : Main.modules.moduleList)
 	        {
 	            if(module.getName().equalsIgnoreCase(args[1])) 
 	            {
 	                module.setKeyBind(Keyboard.getKeyIndex(args[2].toUpperCase()));
-	                mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Bound Module " + EnumChatFormatting.WHITE + module.getName() + EnumChatFormatting.GREEN + " to " + EnumChatFormatting.WHITE + args[2]));
+	                this.sendMessage("Bound module " + module.getName() + " to " + EnumChatFormatting.BOLD + args[2], EnumChatFormatting.WHITE);
 	                return;
 	            }
 	        }
 		}
 		else
 		{
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + this.getSyntax()));
+			this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
             return;
 		}
     }

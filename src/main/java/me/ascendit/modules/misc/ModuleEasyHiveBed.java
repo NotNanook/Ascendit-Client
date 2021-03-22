@@ -16,13 +16,9 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemCloth;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Vec3;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ModuleEasyHiveBed extends Module{
 	
@@ -36,20 +32,15 @@ public class ModuleEasyHiveBed extends Module{
 		this.keyBind = Keyboard.KEY_O;
 	}
 
-	@Override
 	public void onEnable() 
 	{
 		counter = 0;
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.GREEN + "EasyHiveBed" + EnumChatFormatting.WHITE + "]: EasyHiveBed enabled"));
 	}
 
-	@Override
 	public void onDisable() 
 	{
-		mc.thePlayer.addChatComponentMessage(new ChatComponentText("[" + EnumChatFormatting.RED + "EasyHiveBed" + EnumChatFormatting.WHITE + "]: EasyHiveBed disabled"));
 	}
 
-	@Override
 	public void onTick() 
 	{
 		if(counter >= 5 && !Main.projectileAimer.isEnabled())
@@ -86,18 +77,7 @@ public class ModuleEasyHiveBed extends Module{
 			counter++;
 		}
 	}
-
-	@Override
-	public void onInteract(PlayerInteractEvent event) 
-	{
-	}
 	
-	@Override
-	public void onRender2d(RenderGameOverlayEvent.Text event) 
-	{
-	}
-	
-	@Override
 	public void onRender3d(RenderWorldLastEvent event)
 	{	
 		RenderManager renderManager = mc.getRenderManager();
