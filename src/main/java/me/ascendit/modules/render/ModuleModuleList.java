@@ -29,6 +29,7 @@ public class ModuleModuleList extends Module
 		this.enabled = true;
 	}
 	
+	@Override
 	public void onRender2d(RenderGameOverlayEvent.Text event) 
 	{
 		if(!mc.gameSettings.showDebugInfo)

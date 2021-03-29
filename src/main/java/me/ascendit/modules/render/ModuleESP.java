@@ -20,6 +20,7 @@ public class ModuleESP extends Module
 		this.registerModule();
 	}
 	
+	@Override
 	public void onRender3d(RenderWorldLastEvent event)
 	{	
 		for(EntityPlayer player : mc.theWorld.playerEntities)
@@ -52,7 +53,17 @@ public class ModuleESP extends Module
 				GL11.glEnable(GL11.GL_LINE_SMOOTH);
 				GL11.glDisable(GL11.GL_DEPTH_TEST);
 				GL11.glDepthMask(false);
-				GL11.glColor4f(1f, 1f, 1F, 1F);
+				
+				// choose color by team
+				if(player.getTeam() == mc.thePlayer.getTeam())
+				{
+					GL11.glColor4f(1f, 1f, 1F, 1F);
+				}
+				else if(player.getTeam() != mc.thePlayer.getTeam())
+				{
+					GL11.glColor4f(1f, 0f, 0F, 1F);
+				}
+				
 				GL11.glLineWidth(2);
 				
 				worldRenderer.begin(GL11.GL_LINE_STRIP, DefaultVertexFormats.POSITION);

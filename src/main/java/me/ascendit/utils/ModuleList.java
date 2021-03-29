@@ -17,10 +17,9 @@ public class ModuleList {
 	public void addModule(Module module)
 	{
 		this.moduleList.add(module);
-		this.sortByLength();
 	}
 	
-	private void sortByLength()
+	public void sortByLength()
 	{
 		Collections.sort(this.moduleList);
 	}

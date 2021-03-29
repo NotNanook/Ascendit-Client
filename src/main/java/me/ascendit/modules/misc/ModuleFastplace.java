@@ -23,16 +23,19 @@ public class ModuleFastplace extends Module
 		this.keyBind = Keyboard.KEY_P;
 		this.delay = 1;
 	}
-
+	
+	@Override
 	public void onEnable() 
 	{
 		field = ReflectionHelper.findField(Minecraft.class, "rightClickDelayTimer", "field_71467_ac", "ap");
 	}
-
+	
+	@Override
 	public void onDisable() 
 	{
 	}
-
+	
+	@Override
 	public void onInteract(PlayerInteractEvent event) 
 	{
 		if(mc.thePlayer.inventory.getStackInSlot(mc.thePlayer.inventory.currentItem) != null && (mc.thePlayer.inventory.getStackInSlot(mc.thePlayer.inventory.currentItem).getItem() instanceof ItemBlock))

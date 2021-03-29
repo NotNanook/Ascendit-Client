@@ -4,7 +4,6 @@ import org.lwjgl.input.Keyboard;
 
 import me.ascendit.Main;
 import me.ascendit.modules.Module;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 public class CommandBind extends Command{

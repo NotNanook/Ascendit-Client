@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.Display;
 
 import me.ascendit.commands.Command;
+import me.ascendit.commands.CommandAutoclicker;
 import me.ascendit.commands.CommandBind;
 import me.ascendit.commands.CommandFakeCheater;
 import me.ascendit.commands.CommandFastplace;
 import me.ascendit.commands.CommandFurnaceCommand;
+import me.ascendit.commands.CommandHelp;
+import me.ascendit.commands.CommandInvsee;
 import me.ascendit.commands.CommandToggle;
 import me.ascendit.events.onInteractEvent;
 import me.ascendit.events.onKeyInputEvent;
@@ -19,9 +22,11 @@ import me.ascendit.events.onRender3d;
 import me.ascendit.modules.Module;
 import me.ascendit.modules.combat.ModuleAutoclicker;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
+import me.ascendit.modules.misc.ModuleAutoMLG;
 import me.ascendit.modules.misc.ModuleEasyHiveBed;
 import me.ascendit.modules.misc.ModuleFakeCheater;
 import me.ascendit.modules.misc.ModuleFastplace;
+import me.ascendit.modules.misc.ModuleInventoryTracker;
 import me.ascendit.modules.movement.ModuleSprint;
 import me.ascendit.modules.render.ModuleCameraClip;
 import me.ascendit.modules.render.ModuleESP;
@@ -56,15 +61,19 @@ public class Main
     public static ModuleFakeCheater fakeCheater;
     public static ModuleCameraClip cameraClip;
     public static ModuleTrueSight trueSight;
+    public static ModuleAutoMLG autoMLG;
+    public static ModuleInventoryTracker invTracker;
     
     // commands
     public static ArrayList<Command> commands;
-    public static Command toggle;
-    public static Command setDelay;
-    public static Command furnace;
-    public static Command bind;
-    public static Command fakeCheat;
-    public static Command help;
+    public static CommandToggle toggle;
+    public static CommandFastplace setDelay;
+    public static CommandFurnaceCommand furnace;
+    public static CommandBind bind;
+    public static CommandFakeCheater fakeCheat;
+    public static CommandHelp help;
+    public static CommandInvsee invsee;
+    public static CommandAutoclicker autoclick;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -84,6 +93,8 @@ public class Main
     	fakeCheater = new ModuleFakeCheater();
     	cameraClip = new ModuleCameraClip();
     	trueSight = new ModuleTrueSight();
+    	autoMLG = new ModuleAutoMLG();
+    	invTracker = new ModuleInventoryTracker();
     	
     	// commands
     	commands = new ArrayList<Command>();
@@ -92,11 +103,17 @@ public class Main
     	furnace = new CommandFurnaceCommand();
     	bind = new CommandBind();
     	fakeCheat = new CommandFakeCheater();
+    	help = new CommandHelp();
+    	invsee = new CommandInvsee();
+    	autoclick = new CommandAutoclicker();
     }
     
     @EventHandler
     public void init(FMLInitializationEvent event)
     {	
+    	// sort modulelist
+    	modules.sortByLength();
+    	
     	// events
     	MinecraftForge.EVENT_BUS.register(new onKeyInputEvent());
     	MinecraftForge.EVENT_BUS.register(new onLivingUpdateEvent());

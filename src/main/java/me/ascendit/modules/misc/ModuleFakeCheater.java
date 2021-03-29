@@ -21,7 +21,8 @@ public class ModuleFakeCheater extends Module
 		this.fakeCheatPlayers = new ArrayList<EntityPlayer>();
 		this.rd = new Random();
 	}
-
+	
+	@Override
 	public void onTick() 
 	{
 		for(EntityPlayer player : this.fakeCheatPlayers)

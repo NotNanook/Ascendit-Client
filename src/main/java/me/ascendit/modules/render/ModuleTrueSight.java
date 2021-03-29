@@ -6,7 +6,6 @@ import me.ascendit.modules.Module;
 public class ModuleTrueSight extends Module
 {
 	private boolean barrierVis;
-	private boolean entityVis;
 	
 	public ModuleTrueSight()
 	{
@@ -14,16 +13,10 @@ public class ModuleTrueSight extends Module
 		this.registerModule();
 		
 		barrierVis = true;
-		entityVis = true;
 	}
-	
+
 	public boolean isBarrierVisible()
 	{
 		return barrierVis;
-	}
-	
-	public boolean isEntityVisible()
-	{
-		return entityVis;
 	}
 }

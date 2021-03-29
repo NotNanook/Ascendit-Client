@@ -18,6 +18,7 @@ public class Module implements Comparable<Module>{
 	protected boolean enabled;
 	protected int keyBind;
 	protected Minecraft mc;
+	protected String mode;
 	
 	public Module(String name, String description, Category category)
 	{
@@ -30,7 +31,7 @@ public class Module implements Comparable<Module>{
 	}
 	
 	public void registerModule()
-	{		
+	{
 		Main.modules.addModule(this);
 	}
 	
@@ -48,29 +49,17 @@ public class Module implements Comparable<Module>{
 		this.onDisable();
 	}
 	
-	public void onEnable() 
-	{
-	}
+	public void onEnable() {}
 	
-	public void onDisable() 
-	{
-	}
+	public void onDisable() {}
 	
-	public void onTick() 
-	{
-	}
+	public void onTick() {}
 	
-	public void onInteract(PlayerInteractEvent event) 
-	{
-	}
+	public void onInteract(PlayerInteractEvent event) {}
 	
-	public void onRender2d(RenderGameOverlayEvent.Text event) 
-	{
-	}
+	public void onRender2d(RenderGameOverlayEvent.Text event) {}
 	
-	public void onRender3d(RenderWorldLastEvent event) 
-	{
-	}
+	public void onRender3d(RenderWorldLastEvent event) {}
 	
 	public void sendMessage(String msg, EnumChatFormatting color)
 	{
@@ -103,9 +92,9 @@ public class Module implements Comparable<Module>{
 	@Override
 	public int compareTo(Module compareto)
 	{
-		int thisLength = this.name.length();
-		int thatLength = compareto.name.length();
-		
+		int thisLength = mc.fontRendererObj.getStringWidth(this.name);
+		int thatLength = mc.fontRendererObj.getStringWidth(compareto.name);
+
 		return thatLength - thisLength;
 	}
 }

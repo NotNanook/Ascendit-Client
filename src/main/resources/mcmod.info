@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "modid": "ascendit",
+  "name": "Ascendit Client",
+  "description": "A Minecraft utility mod",
+  "version": "0.1",
+  "mcversion": "1.8.9",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Nanook", "Myzo"],
+  "credits": "The two guys working on this",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

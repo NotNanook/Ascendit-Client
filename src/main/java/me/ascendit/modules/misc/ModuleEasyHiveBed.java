@@ -31,16 +31,19 @@ public class ModuleEasyHiveBed extends Module{
 		this.registerModule();
 		this.keyBind = Keyboard.KEY_O;
 	}
-
+	
+	@Override
 	public void onEnable() 
 	{
 		counter = 0;
 	}
-
+	
+	@Override
 	public void onDisable() 
 	{
 	}
-
+	
+	@Override
 	public void onTick() 
 	{
 		if(counter >= 5 && !Main.projectileAimer.isEnabled())
@@ -78,6 +81,7 @@ public class ModuleEasyHiveBed extends Module{
 		}
 	}
 	
+	@Override
 	public void onRender3d(RenderWorldLastEvent event)
 	{	
 		RenderManager renderManager = mc.getRenderManager();

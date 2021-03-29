@@ -7,7 +7,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C01PacketChatMessage;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0BPacketEntityAction;
-import net.minecraft.network.play.server.S02PacketChat;
+import net.minecraft.network.play.server.S18PacketEntityTeleport;
+import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class onPacketOutEvent {
@@ -40,6 +41,11 @@ public class onPacketOutEvent {
 					}
 				}
 			}
+		}
+		
+		if(packet instanceof S18PacketEntityTeleport)
+		{
+			mc.thePlayer.addChatComponentMessage(new ChatComponentText("Tp packet sent!"));
 		}
 	}
 }

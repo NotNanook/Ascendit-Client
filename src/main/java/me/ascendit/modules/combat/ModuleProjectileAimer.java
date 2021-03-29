@@ -31,6 +31,7 @@ public class ModuleProjectileAimer extends Module
 		this.keyBind = Keyboard.KEY_F;
 	}
 	
+	@Override
 	public void onEnable() 
 	{
 		// Get old player position
@@ -51,6 +52,7 @@ public class ModuleProjectileAimer extends Module
 		mc.thePlayer.noClip = true;
 	}
 
+	@Override
 	public void onDisable() 
 	{		
 		// Update player angle
@@ -66,6 +68,7 @@ public class ModuleProjectileAimer extends Module
 		mc.thePlayer.motionZ = 0;
 	}
 	
+	@Override
 	public void onTick() 
 	{
 		// Make player able to fly and phase thru blocks
@@ -94,6 +97,7 @@ public class ModuleProjectileAimer extends Module
 		mc.thePlayer.motionZ = Math.cos(yaw) * 0.8;
 	}
 	
+	@Override
 	public void onInteract(PlayerInteractEvent event) 
 	{
 		BlockPos pos = event.pos;

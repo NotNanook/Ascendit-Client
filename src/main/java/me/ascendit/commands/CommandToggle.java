@@ -3,8 +3,6 @@ package me.ascendit.commands;
 
 import me.ascendit.Main;
 import me.ascendit.modules.Module;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 public class CommandToggle extends Command

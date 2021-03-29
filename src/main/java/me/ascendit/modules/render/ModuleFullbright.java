@@ -10,12 +10,14 @@ public class ModuleFullbright extends Module {
         super("Fullbright", "Brightens up the world around you", Category.RENDER);
         this.registerModule();
     }
-
+    
+    @Override
     public void onEnable() 
     {
         mc.gameSettings.gammaSetting = 100f;
     }
-
+    
+    @Override
     public void onDisable() 
     {
         mc.gameSettings.gammaSetting = 1f;

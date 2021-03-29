@@ -19,8 +19,8 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.util.BlockPos;
 
 @Mixin(EntityRenderer.class)
-public class MixinCameraClip {
-	
+public class MixinCameraClip 
+{	
 	Minecraft mc = Minecraft.getMinecraft();
 	
 	@Shadow
