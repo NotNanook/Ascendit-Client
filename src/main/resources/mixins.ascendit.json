@@ -6,6 +6,8 @@
 	"mixins": [
 		"MixinGuiMainMenu",
 		"MixinCameraClip",
-		"MixinWorldClient"
+		"MixinWorldClient",
+		"MixinGuiIngame",
+		"MixinLiquids"
 	]
 }

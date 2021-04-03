@@ -5,11 +5,15 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import me.ascendit.events.PacketEvent;
 import me.ascendit.modules.Category;
 import me.ascendit.modules.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vector3d;
@@ -139,6 +143,17 @@ public class ModuleProjectileAimer extends Module
 			{
 				this.sendMessage("No valid angle found", EnumChatFormatting.RED);
 			}
+		}
+	}
+	
+	@Override
+	public void onPacketOut(PacketEvent.Outgoing event)
+	{
+		Packet<?> packet = event.getPacket();
+		
+		if(packet instanceof C03PacketPlayer || packet instanceof C0BPacketEntityAction) 
+		{
+			event.setCanceled(true);
 		}
 	}
 	

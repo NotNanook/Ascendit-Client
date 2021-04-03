@@ -1,5 +1,7 @@
 package me.ascendit.modules.combat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import org.lwjgl.input.Mouse;
@@ -24,6 +26,7 @@ public class ModuleAutoclicker extends Module {
         this.registerModule();
         this.random = new Random();
         this.mode = "left";
+        this.modes = new ArrayList<String>(Arrays.asList("left", "right", "both")); // create all different modes
     }
     
     @Override

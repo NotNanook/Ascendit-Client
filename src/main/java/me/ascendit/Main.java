@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.Display;
 
 import me.ascendit.commands.Command;
-import me.ascendit.commands.CommandAutoclicker;
+import me.ascendit.commands.CommandAscenditChat;
 import me.ascendit.commands.CommandBind;
 import me.ascendit.commands.CommandFakeCheater;
 import me.ascendit.commands.CommandFastplace;
@@ -22,13 +22,14 @@ import me.ascendit.events.onRender3d;
 import me.ascendit.modules.Module;
 import me.ascendit.modules.combat.ModuleAutoclicker;
 import me.ascendit.modules.combat.ModuleProjectileAimer;
-import me.ascendit.modules.misc.ModuleAutoMLG;
 import me.ascendit.modules.misc.ModuleEasyHiveBed;
 import me.ascendit.modules.misc.ModuleFakeCheater;
 import me.ascendit.modules.misc.ModuleFastplace;
 import me.ascendit.modules.misc.ModuleInventoryTracker;
+import me.ascendit.modules.misc.ModuleLiquidPlace;
 import me.ascendit.modules.movement.ModuleSprint;
 import me.ascendit.modules.render.ModuleCameraClip;
+import me.ascendit.modules.render.ModuleCustomHotbar;
 import me.ascendit.modules.render.ModuleESP;
 import me.ascendit.modules.render.ModuleFullbright;
 import me.ascendit.modules.render.ModuleModuleList;
@@ -61,8 +62,9 @@ public class Main
     public static ModuleFakeCheater fakeCheater;
     public static ModuleCameraClip cameraClip;
     public static ModuleTrueSight trueSight;
-    public static ModuleAutoMLG autoMLG;
     public static ModuleInventoryTracker invTracker;
+    public static ModuleCustomHotbar customHotbar;
+    public static ModuleLiquidPlace liquidPlace;
     
     // commands
     public static ArrayList<Command> commands;
@@ -73,7 +75,7 @@ public class Main
     public static CommandFakeCheater fakeCheat;
     public static CommandHelp help;
     public static CommandInvsee invsee;
-    public static CommandAutoclicker autoclick;
+    public static CommandAscenditChat ascenditchat;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -93,8 +95,9 @@ public class Main
     	fakeCheater = new ModuleFakeCheater();
     	cameraClip = new ModuleCameraClip();
     	trueSight = new ModuleTrueSight();
-    	autoMLG = new ModuleAutoMLG();
     	invTracker = new ModuleInventoryTracker();
+    	customHotbar = new ModuleCustomHotbar();
+    	liquidPlace = new ModuleLiquidPlace();
     	
     	// commands
     	commands = new ArrayList<Command>();
@@ -105,7 +108,7 @@ public class Main
     	fakeCheat = new CommandFakeCheater();
     	help = new CommandHelp();
     	invsee = new CommandInvsee();
-    	autoclick = new CommandAutoclicker();
+    	ascenditchat = new CommandAscenditChat();
     }
     
     @EventHandler

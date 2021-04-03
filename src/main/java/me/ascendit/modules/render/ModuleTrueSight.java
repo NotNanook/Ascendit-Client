@@ -9,6 +9,7 @@ public class ModuleTrueSight extends Module
 	
 	public ModuleTrueSight()
 	{
+		// Mixin based module
 		super("TrueSight", "Allows you to see invisible entities and barriers", Category.RENDER);
 		this.registerModule();
 		

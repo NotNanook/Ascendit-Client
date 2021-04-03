@@ -2,27 +2,26 @@ package me.ascendit.events;
 
 import me.ascendit.Main;
 import me.ascendit.commands.Command;
-import net.minecraft.client.Minecraft;
+import me.ascendit.modules.Module;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C01PacketChatMessage;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C0BPacketEntityAction;
-import net.minecraft.network.play.server.S18PacketEntityTeleport;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class onPacketOutEvent {
 	
 	@SubscribeEvent
-	public void outgoing(PacketEvent.Outgoing event) {
-		Packet<?> packet = event.getPacket();
-		Minecraft mc = Minecraft.getMinecraft();
-		
-		// projectile aimer freecam
-		if((packet instanceof C03PacketPlayer || packet instanceof C0BPacketEntityAction) && Main.projectileAimer.isEnabled()) 
+	public void outgoing(PacketEvent.Outgoing event) 
+	{
+		for(Module module : Main.modules.moduleList)
 		{
-			event.setCanceled(true);
+			if(module.isEnabled())
+			{
+				module.onPacketOut(event);
+			}
 		}
+		
+		Packet<?> packet = event.getPacket();
 		
 		// chat commands
 		if(packet instanceof C01PacketChatMessage)
@@ -40,12 +39,24 @@ public class onPacketOutEvent {
 						command.onCommand(message);
 					}
 				}
+				
+				for (Module module: Main.modules.moduleList) {
+                    if (message[0].substring(1).equalsIgnoreCase(module.getName())) {
+                        if (message[1].equalsIgnoreCase("mode")) {
+                        	String inputMode = message[2].toLowerCase();
+                        	if(module.getModes().contains(inputMode))
+                        	{
+                        		module.setMode(inputMode);
+                                module.sendMessage(module.getName() + " mode set to " + module.getMode().toUpperCase(), EnumChatFormatting.GREEN);
+                        	}
+                        	else
+                        	{
+                        		module.sendMessage("These are valid modes: " + module.getModes(), EnumChatFormatting.YELLOW);
+                        	}
+                        }
+                    }
+                }
 			}
-		}
-		
-		if(packet instanceof S18PacketEntityTeleport)
-		{
-			mc.thePlayer.addChatComponentMessage(new ChatComponentText("Tp packet sent!"));
 		}
 	}
 }

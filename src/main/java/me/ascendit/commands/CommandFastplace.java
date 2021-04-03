@@ -1,8 +1,8 @@
 package me.ascendit.commands;
 
+import org.apache.commons.lang3.StringUtils;
+
 import me.ascendit.Main;
-import me.ascendit.modules.misc.ModuleFastplace;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 public class CommandFastplace extends Command {
@@ -23,17 +23,16 @@ public class CommandFastplace extends Command {
         } 
         else 
         {
-            try
+            if(StringUtils.isNumeric(args[1]))
             {
                 int newDelay = Integer.parseInt(args[1]);
                 Main.fastplace.setDelay(newDelay);
                 this.sendMessage("Delay set to " + EnumChatFormatting.BOLD + args[1], EnumChatFormatting.WHITE);
 
             } 
-            catch (NumberFormatException e) 
+            else
             {
             	this.sendMessage(this.getSyntax(), EnumChatFormatting.YELLOW);
-                return;
             }
         }
     }
