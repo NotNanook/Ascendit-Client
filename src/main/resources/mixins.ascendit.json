@@ -4,10 +4,26 @@
 	"required": true,
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
-		"MixinGuiMainMenu",
-		"MixinCameraClip",
-		"MixinWorldClient",
-		"MixinGuiIngame",
-		"MixinLiquids"
+		"block.MixinBlock",
+		"block.MixinBlockLiquid",
+		"block.MixinBlockModelRenderer",
+		"block.MixinBlockSoulSand",
+		"client.MixinMinecraft",
+		"entity.MixinAbstractClientPlayer",
+		"entity.MixinEntity",
+		"entity.MixinEntityArrow",
+		"entity.MixinEntityLivingBase",
+		"entity.MixinEntityPlayer",
+		"entity.MixinEntityPlayerSP",
+		"entity.MixinPlayerControllerMP",
+		"gui.MixinGuiConnecting",
+		"gui.MixinGuiIngame",
+		"gui.MixinGuiMainMenu",
+		"gui.MixinGuiMultiplayer",
+		"network.MixinNetworkManager",
+		"render.MixinEntityRenderer",
+		"render.MixinRender",
+		"render.MixinRendererLivingEntity",
+		"world.MixinWorldClient"
 	]
 }

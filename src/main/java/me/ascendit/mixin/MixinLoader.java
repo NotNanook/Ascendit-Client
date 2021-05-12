@@ -11,11 +11,16 @@ import org.spongepowered.asm.mixin.Mixins;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
 public class MixinLoader implements IFMLLoadingPlugin {
-	
+
 	public MixinLoader() {
 		MixinBootstrap.init();
 		Mixins.addConfiguration("mixins.ascendit.json");
 		MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);
+	}
+
+	@Override
+	public String getAccessTransformerClass() {
+		return null;
 	}
 
 	@Override
@@ -35,12 +40,6 @@ public class MixinLoader implements IFMLLoadingPlugin {
 	}
 
 	@Override
-	public void injectData(Map<String, Object> data) {
+	public void injectData(final Map<String, Object> data) {
 	}
-
-	@Override
-	public String getAccessTransformerClass() {
-		return null;
-	}
-
 }

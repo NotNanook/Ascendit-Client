@@ -2,13 +2,13 @@
 {
   "modid": "ascendit",
   "name": "Ascendit Client",
-  "description": "A Minecraft utility mod",
+  "description": "A Minecraft Forge 1.8.9 cheat client",
   "version": "0.1",
   "mcversion": "1.8.9",
   "url": "",
   "updateUrl": "",
-  "authorList": ["Nanook", "Myzo"],
-  "credits": "The two guys working on this",
+  "authorList": ["Nanook, Myzo"],
+  "credits": "Nanook, Myzo",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
